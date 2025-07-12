@@ -273,6 +273,33 @@ esperado
 
 <img width="1034" height="348" alt="image" src="https://github.com/user-attachments/assets/75d3b89a-6c0f-4bee-9ec7-6dc3028a905a" />
 
+### 6. Exclusão dos recursos
+
+6.1. Para deletar a função Lambda, acesse o menu hambúrguer no canto superior
+esquerdo do console da AWS, clique em "Funções" na seção Lambda, selecione
+a função desejada, clique em "Ações" no topo da página e, no menu suspenso,escolha "Excluir". Em seguida, confirme a exclusão quando solicitado para
+remover a função Lambda permanentemente.
+
+6.2. Acesse o painel do IAM, no menu à esquerda, procure por "Funções", pesquise
+pela função “RoleTerminarEC2-<seu nome e sobrenome>”, selecione-a e, no
+canto superior, clique no botão "Excluir". Em seguida, confirme a exclusão
+quando solicitado para remover a role permanentemente.
+
+6.3. Agora, acesse "Políticas" no menu à esquerda, pesquise pela política
+"PoliticaTerminarEC2-<seu nome e sobrenome>", selecione-a e clique no
+botão "Excluir". Quando aparecer a janela de confirmação, siga os passos para
+concluir a remoção.
+
+6.4. Por fim, pesquise por "Amazon EventBridge" na barra de pesquisa, no menu à
+esquerda, na seção "Barramentos", clique em "Regras", selecione a sua regra e
+clique em "Excluir" para removê-la permanentemente.
+
+6.5. No canto superior direito do console de gerenciamento da AWS, clique em cima
+do seu nome de usuário que está em azul, depois clique em “Sair” que aparece
+mais abaixo.
+
+6.6. Pronto! Laboratório concluído com sucesso!
+
 > stay focused!
 
 
