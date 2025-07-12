@@ -300,6 +300,39 @@ do seu nome de usuário que está em azul, depois clique em “Sair” que apare
 mais abaixo.
 
 6.6. Pronto! Laboratório concluído com sucesso!
+----
+
+### Resumo do Lab:
+##### 🔐 1. Criação da Política IAM
+- Criada uma política personalizada em JSON para permitir ações EC2 e logs.
+- Nome: PoliticaTerminarEC2-.
+
+##### 👤 2. Criação da Role (Função IAM)
+- Criada uma função IAM para serviços Lambda.
+- Associada à política PoliticaTerminarEC2-.
+- Nome: RoleTerminarEC2-.
+
+##### 🧠 3. Criação da Função Lambda
+- Criada função Lambda do zero chamada LambdaTerminarEC2-.
+- Linguagem: Python 3.9.
+- Usada a role RoleTerminarEC2- com permissões adequadas.
+
+##### 📦 4. Upload e Configuração do Script
+- Feito upload do script Terminator.py (ZIP).
+- Código percorre regiões e termina instâncias EC2 em estado running, stopped e stopping.
+- Tempo de execução ajustado para 10 segundos.
+- Configurado o handler como Terminator.lambda_handler.
+
+##### ⏰ 5. Agendamento com EventBridge
+- Adicionado um gatilho EventBridge à função Lambda.
+- Criada regra com expressão rate(5 minutes) (ou rate(12 hours)).
+- Permite execução automática e periódica da função.
+
+##### ✅ 6. Testes e Limpeza dos Recursos
+- Criadas novas instâncias EC2 para validar a função.
+- Depois, todos os recursos foram deletados: Lambda, Role, Política e Regra do EventBridge.
+
+Finalizado com logout do console.
 
 > stay focused!
 
