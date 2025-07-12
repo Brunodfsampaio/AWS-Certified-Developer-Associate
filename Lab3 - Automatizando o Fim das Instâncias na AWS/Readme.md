@@ -1,4 +1,3 @@
-<img width="1263" height="843" alt="image" src="https://github.com/user-attachments/assets/c4db700f-2a44-4b2c-a4ed-7892e033c485" />
 
 ### Resumo do laboratório
 Neste laboratório, você aprenderá a criar e gerenciar políticas e funções no AWS, focando
