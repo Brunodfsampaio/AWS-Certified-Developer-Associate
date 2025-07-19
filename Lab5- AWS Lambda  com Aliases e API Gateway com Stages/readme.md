@@ -1,4 +1,4 @@
-<img width="1261" height="618" alt="image" src="https://github.com/user-attachments/assets/416524e3-ab69-4720-96ae-57dcdf1ef22e" /># Resumo do Laboratório
+
 #### Observação: 
 A interface do Console de Gerenciamento da AWS pode sofrer pequenas
 alterações visuais ao longo do tempo, mas os conceitos e a localização geral dos
