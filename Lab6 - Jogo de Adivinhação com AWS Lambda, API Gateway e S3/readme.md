@@ -459,6 +459,7 @@ exatamente: excluir permanentemente. Após isso, o botão "Vazio" ficará
 disponível para apagar todos os arquivos do bucket. Depois de esvaziar, você
 poderá excluir o bucket normalmente.
 
+
 6.1.1. O botão "Vazio" apaga todos os dados dentro do bucket de uma vez. Caso
 você queira apagar arquivos específicos, basta entrar no bucket, selecionar
 o(s) arquivo(s) desejado(s) e, no canto superior direito, clicar no botão
@@ -481,3 +482,6 @@ localize e selecione a sua função Lambda. No canto superior direito, clique em
 isso encerrará completamente o uso dos recursos criados durante o laboratório.
 
 6.5. Pronto! Laboratório concluído com sucesso!
+
+
+> stay focused!
