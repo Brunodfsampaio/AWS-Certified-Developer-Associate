@@ -31,6 +31,7 @@ secundários locais e globais.
 5. Consulte a imagem de exemplo para garantir que os campos estejam corretos.
 
 <img width="733" height="299" alt="image" src="https://github.com/user-attachments/assets/b8ac2eb7-b6bb-4ed6-a319-72a2d7ac7b00" />
+<img width="1247" height="548" alt="image" src="https://github.com/user-attachments/assets/db68c4b1-0c77-4875-8d6c-0c04da2ecb0d" />
 
 # Passo 2: Configurar a tabela no DynamoDB
 1. Em Configurações da tabela, marque Personalizar configurações.
@@ -47,6 +48,10 @@ secundários locais e globais.
 - Tipo de dados: String
 - Nome do índice: LSI-PedidoseunomeStatus
 - Projeções de atributos: All
+
+<img width="1242" height="803" alt="image" src="https://github.com/user-attachments/assets/180e405f-b3e8-4b13-ac74-5e9317e8aac6" />
+<img width="1270" height="555" alt="image" src="https://github.com/user-attachments/assets/ebc19301-a8ba-4cd7-940f-547ad8f79cdc" />
+
 7. Clique em Criar índice.
 8. Verifique se a configuração corresponde à imagem de exemplo abaixo:
 <img width="731" height="68" alt="image" src="https://github.com/user-attachments/assets/cf175f71-af9e-4fa1-a33d-c7928e1d2c14" />
@@ -64,6 +69,9 @@ abaixo:
 # Passo 3: Configurar a tabela no DynamoDB
 14. Acesse a página desejada e role até o final.
 15. Clique no campo Criar item.
+
+<img width="1266" height="789" alt="image" src="https://github.com/user-attachments/assets/0880c27a-123f-4829-b150-1e0ab71b26b1" />
+
 16. Preencha os campos iniciais:
 - ID do Usuário: U000
 - Data do Pedido: 2025-05-16
@@ -671,6 +679,7 @@ inferior da tela.
 - ls
 - Se o arquivo aparecer na listagem, o upload foi realizado com sucesso.
 <img width="675" height="175" alt="image" src="https://github.com/user-attachments/assets/67465115-5f0e-4e4a-a36e-4d8d3929f98d" />
+<img width="1276" height="751" alt="image" src="https://github.com/user-attachments/assets/e2d17417-6a2e-4558-8251-c7c212b45c31" />
 
 
 # Passo 7: Importar os Dados para o DynamoDB
@@ -686,6 +695,7 @@ file://pedidos_import.json
 40. Confirme a importação dos Dados
 - Após executar o comando, uma mensagem de retorno será exibida no terminal — semelhante à mostrada na imagem abaixo.
 <img width="667" height="134" alt="image" src="https://github.com/user-attachments/assets/de9146eb-c14a-48fb-ae4e-3addc5bd0c7f" />
+<img width="1264" height="832" alt="image" src="https://github.com/user-attachments/assets/b569d3e7-94e8-4c83-93c7-fc3a45156b7a" />
 
 # Passo 8: Verificar os itens na Tabela DynamoDB
 41. Confirme o sucesso da importação
@@ -698,6 +708,7 @@ sucesso. Podemos seguir em frente.
 43. Confira os itens inseridos
 - No campo “Tabela: Pedido-seunome – Itens retornados”, os dados carregados devem aparecer conforme mostrado na imagem abaixo.
 <img width="682" height="274" alt="image" src="https://github.com/user-attachments/assets/729020b3-7884-4e51-bcbe-a142ed69f983" />
+<img width="1232" height="754" alt="image" src="https://github.com/user-attachments/assets/d037f925-5389-4091-ad59-2143c4a77c75" />
 
 # Passo 9: Realizar Busca pelo Campo “Verificar”
 44. Selecione a aba “Verificar”
@@ -709,6 +720,9 @@ o Marque a caixa “verificar” e clique em “Filtros - opcional”.
 - No campo “Condição”, selecione: Igual a
 - No campo “Tipo”, selecione: String
 - No campo “Valor”, digite: U001
+
+<img width="1229" height="776" alt="image" src="https://github.com/user-attachments/assets/44c2aaa6-e1a3-4bab-9a50-b2f5efaee8a5" />
+
 47. Execute a busca
 - Clique no botão “Executar”.
 48. Visualize o resultado
@@ -732,6 +746,8 @@ Observação sobre a Busca por “Verificar”
 - O sistema exibirá os itens relacionados ao ID informado — conforme mostrado na imagem abaixo.
 
 <img width="608" height="300" alt="image" src="https://github.com/user-attachments/assets/0e88058d-2147-45fa-88c5-032120cfe68e" />
+<img width="1208" height="772" alt="image" src="https://github.com/user-attachments/assets/ecac6062-05f7-439d-9ebf-81ab35e69077" />
+<img width="1247" height="636" alt="image" src="https://github.com/user-attachments/assets/01fd3506-8eb5-4661-86cf-40404e134b31" />
 
 Atenção:
 Observação sobre a Busca por “Consulta”
@@ -748,12 +764,16 @@ Observação sobre a Busca por “Consulta”
 - Selecionar projeção de atributos → manter “Todos os atributos”
 - Chave de classificação: Status
 - Selecione: “Igual a” no campo ao lado, digite: Entregue
+
+<img width="1256" height="714" alt="image" src="https://github.com/user-attachments/assets/0adaf63e-603b-4ad2-a16c-ff2f48df86f9" />
+
 55. Execute a consulta
 - Clique em “Executar”.
 56. Visualize os resultados
 - Os itens com status “Entregue” para o usuário U001 serão exibidos, conforme mostrado na imagem abaixo.
 
 <img width="607" height="408" alt="image" src="https://github.com/user-attachments/assets/6658fead-7b5b-4e1c-a777-f4f868df0e52" />
+<img width="1253" height="752" alt="image" src="https://github.com/user-attachments/assets/40c05d5c-78dd-42a8-b94b-19b3bab10cb5" />
 
 Atenção:
 Observação sobre a Consulta com Índice
@@ -777,6 +797,10 @@ Observação sobre a Consulta com Índice
 - Condição: Maior que ou igual a
 - Tipo: Número
 - Valor: 80
+
+<img width="1228" height="814" alt="image" src="https://github.com/user-attachments/assets/3d558841-ac07-44ae-92d0-2206c124405a" />
+<img width="1199" height="729" alt="image" src="https://github.com/user-attachments/assets/d9d8ea2b-7a5d-44e0-a49f-b4c340cc64cd" />
+
 60. Execute a consulta
 - Clique em “Executar”.
 61. Verifique os resultados
@@ -796,6 +820,9 @@ Observação sobre a Consulta com Índice
 - Com a tabela aberta, clique na aba “Índices”.
 65. Iniciar a criação do índice
 - Na seção “Índices secundários globais”, clique em “Criar índice”.
+
+<img width="1264" height="678" alt="image" src="https://github.com/user-attachments/assets/f30cbd41-d33f-4627-9778-802d69345546" />
+
 66. Preencha os campos do novo índice
 - Chave de partição: Status
 - Tipo de dado: String
@@ -805,10 +832,14 @@ Observação sobre a Consulta com Índice
 67. Finalizar criação do índice
 - Não altere nenhuma outra configuração.
 - Role até o final da página e clique no botão “Criar índice”.
+
+<img width="1251" height="589" alt="image" src="https://github.com/user-attachments/assets/e57fd2ab-9bc2-4a95-8ba2-3151e9230d03" />
+
 68. Aguarde a criação
 - O processo pode levar cerca de 10 minutos para ser concluído — veja o exemplo na imagem abaixo.
 
 <img width="755" height="252" alt="image" src="https://github.com/user-attachments/assets/a6e999ff-c2c1-4df3-8b0e-50a60db9cf89" />
+<img width="666" height="656" alt="image" src="https://github.com/user-attachments/assets/adb55ab5-7ddd-4bd7-ad86-a556fd095ca5" />
 
 Passo 14: Acessar e Visualizar o índice Secundário Global
 69. Clique em “Explorar itens da tabela”
@@ -816,6 +847,7 @@ Passo 14: Acessar e Visualizar o índice Secundário Global
 “Explorar itens da tabela”.
 70. Selecione o índice recém-criado
 - No campo “Selecionar uma tabela ou índice”, você já poderá visualizar o índice GLI-Status-ValorTotal criado anteriormente.
+<img width="664" height="561" alt="image" src="https://github.com/user-attachments/assets/4bbfa2bc-2ff2-4f4d-8ffb-b600513c1e3b" />
 
 71. Confirme a seleção
 - Após selecionar o índice, os dados relacionados começarão a ser exibidos — conforme mostrado na imagem abaixo.
@@ -837,10 +869,12 @@ Passo 14: Acessar e Visualizar o índice Secundário Global
 - Os dados serão exibidos conforme mostrado na imagem abaixo, com desempenho otimizado devido ao uso direto das chaves do índice.
 
 <img width="756" height="351" alt="image" src="https://github.com/user-attachments/assets/63afac84-92c9-4aee-8680-98e50b87b194" />
+<img width="629" height="778" alt="image" src="https://github.com/user-attachments/assets/a9d69887-6f09-422c-88d3-a6435a77b9ce" />
 
 -  Após clicar em “Executar”, verifique se:
 76. Os dados exibidos correspondem aos critérios definidos
 - Os registros com Status “Entregue” e ValorTotal maior ou igual a 60 devem ser listados.
+<img width="674" height="665" alt="image" src="https://github.com/user-attachments/assets/dcb129a7-39b6-4f84-a490-26ab65425777" />
 
 77. A mensagem de eficiência aparece em verde
 - Observe se há uma mensagem em destaque verde, indicando a eficiência da consulta e confirmando que os recursos foram bem utilizados — como mostrado na imagem abaixo.
@@ -887,8 +921,6 @@ Laboratório Finalizado com Sucesso!
 86. Parabéns! Você criou, manipulou e consultou dados em uma tabela do DynamoDB, utilizando índices locais e globais, e finalizou tudo com a limpeza correta dos recursos.
 
 
-
-
-
+> stay focused!
 
 
