@@ -1,5 +1,5 @@
 # Laboratório – SSM Parameter Store
-Hands on (CLI )
+*Hands on (CLI )*
 
 # Observação: A interface do Console de Gerenciamento da AWS pode sofrer
 pequenas alterações visuais ao longo do tempo, mas os conceitos e a localização
