@@ -189,7 +189,8 @@ Pré-requisitos
 - Exclua o Assinatura e tópico do SNS (se criou).
 -  Exclua a instância EC2.
 -  Exclua a role
--  Delete seu grupo de segurança -opcional
+-  Delete seu grupo de segurança
+-  Grupos de logs
 
   > stay focused!
 
