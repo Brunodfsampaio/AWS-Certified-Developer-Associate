@@ -184,12 +184,12 @@ copiado e SeuNomeRole pelo nome da sua role.
 
 ```
 python3 credenciais_temporarias.py --role-arn
-arn:aws:iam::SEU_ROLE_ARN:role/SeuNomeRole --session-name AcessoTemporario --
-duration 7200
+arn:aws:iam::SEU_ROLE_ARN:role/SeuNomeRole --session-name AcessoTemporario --duration 7200
 ```
 
 b. Observe o erro, pois a duração padrão máxima é 3600 segundos igual a (1 hora).
 <img width="906" height="141" alt="image" src="https://github.com/user-attachments/assets/8997a2cd-eba1-48dc-b366-8febe14f4096" />
+<img width="1263" height="302" alt="image" src="https://github.com/user-attachments/assets/a9dbbdea-e63d-42bb-bdf6-0cbe7fd85d42" />
 
 3. Executar com Duração Válida:
 a. Altere --duration para 3600 e execute novamente:
@@ -202,6 +202,7 @@ duration 3600
 <img width="902" height="240" alt="image" src="https://github.com/user-attachments/assets/72ab5a89-6084-457d-ba80-5e0232247075" />
 
 b. Copie as informações: AWS Access Key ID, AWS Secret Access Key, AWS Session Token exibidas no terminal.
+<img width="249" height="241" alt="image" src="https://github.com/user-attachments/assets/055711ca-9038-48e6-907f-077121de583d" />
 
 ## Passo 5: Configurar no AWS CLI
 1. Configurar Credenciais Temporárias: No CloudShell, digite aws configure
@@ -249,6 +250,8 @@ aws s3 ls
 a. Deve listar seus buckets S3.
 <img width="895" height="285" alt="image" src="https://github.com/user-attachments/assets/b2417fdc-322d-43db-8a00-365b5f2c999e" />
 
+<img width="275" height="392" alt="image" src="https://github.com/user-attachments/assets/e0868b5b-d80a-4daa-9bb5-f45c425a697b" />
+
 2. Verificar Identidade Atual:
 ```
 aws sts get-caller-identity
@@ -262,6 +265,7 @@ aws lambda list-functions
 
 a. Deve retornar "acesso negado".
 <img width="926" height="140" alt="image" src="https://github.com/user-attachments/assets/4a6a5159-56fc-4cbc-bf78-7214888573b9" />
+<img width="266" height="198" alt="image" src="https://github.com/user-attachments/assets/f62701e3-5d8a-48f3-a5dd-431753cb20ba" />
 
 ## Passo 8: Simular Expiração
 1. Verificar Tempo de Sessão:
@@ -279,13 +283,16 @@ a. Deve retornar um erro de credenciais expiradas.
 
 ## Passo 9: Restaurar Credenciais Originais
 1. Editar ~/.aws/credentials:
+
 ```
 sudo nano ~/.aws/credentials
 ```
+
 a. Comente (#) ou remova as linhas: aws_access_key_id, aws_secret_access_key, aws_session_token.
 b. Salve e saia (CTRL+O e Enter, CTRL+X).
 <img width="907" height="111" alt="image" src="https://github.com/user-attachments/assets/eace952b-62d6-400b-81e8-35f0f9c5aa46" />
 2. Editar ~/.aws/config:
+
 ```
 sudo nano ~/.aws/config
 ```
@@ -294,9 +301,11 @@ b. Salve e saia (CTRL+O e Enter, CTRL+X).
 
 ## Passo 10: Confirmar Identidade Atual
 1. Verificar Identidade:
+
 ```
 aws sts get-caller-identity
 ```
+
 a. Confirme que você voltou ao seu usuário IAM original.
 <img width="901" height="196" alt="image" src="https://github.com/user-attachments/assets/cab3e2ef-e5aa-479d-b4a6-83a83e213ef5" />
 
@@ -309,6 +318,8 @@ Confiança
 1. Editar Política: Vá para a aba "Relações de Confiança" > "Editar política de
 confiança".
 <img width="916" height="342" alt="image" src="https://github.com/user-attachments/assets/5d8d14f0-12df-489a-9ae9-6f09d12e3164" />
+<img width="990" height="422" alt="image" src="https://github.com/user-attachments/assets/9dd32799-5da4-4b26-9495-bc0c25c9f76e" />
+
 2. Modificar JSON:
 a. Apague o JSON existente.
 b. Adicione uma nova instrução (clique em "Adicionar nova instrução").
@@ -324,6 +335,7 @@ a. Resultado: Você receberá um erro de "acesso negado" (ou similar).
 <img width="912" height="128" alt="image" src="https://github.com/user-attachments/assets/e38c6760-6ecd-4ce5-a9c8-95371e0076f8" />
 b. Explicação: A política de confiança da role foi modificada, e seu
 usuário não está mais autorizado a assumir essa role.
+<img width="612" height="47" alt="image" src="https://github.com/user-attachments/assets/c679e686-da6a-4447-b868-5cb29a471987" />
 
 ## Passo 14: Excluindo Recursos
 1. Excluir CloudShell: No CloudShell, clique em "Ações" > "Excluir". Digite
