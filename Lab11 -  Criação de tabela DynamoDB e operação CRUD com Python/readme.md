@@ -43,8 +43,9 @@ baixo e, em "Caso de uso", selecione "Lambda". Clique em "Próximo".
 4.1.AWSLambdaBasicExecutionRole
 4.2.AmazonDynamoDBFullAccess
 Adicione-as e depois clique em "Próximo".
-
 5. Em "Nome do perfil", digite RoleCrud-seunome e clique em "Criar perfil".
+
+<img width="1247" height="737" alt="image" src="https://github.com/user-attachments/assets/77dc48f4-ba7a-4850-9437-e8bb062c6d9c" />
 
 ## Passo 2: Criação de tabela no Dynamo
 1. Acesse o Console de Gerenciamento da AWS e navegue até o serviço DynamoDB.
@@ -53,6 +54,7 @@ Adicione-as e depois clique em "Próximo".
 4. No campo "Chave de partição", digite id. Ao lado, deixe selecionado "String".
 5. Não altere mais nenhuma configuração nesta seção e clique em "Criar tabela".
 6. Salve o nome da sua tabela em um bloco de notas para referência futura.
+<img width="1260" height="668" alt="image" src="https://github.com/user-attachments/assets/acdf9c6b-0af7-4b8b-af92-90988dc6eec7" />
 
 ## Passo 3: Criação da Função no Lambda
 1. Acesse o Console de Gerenciamento da AWS e navegue até o serviço Lambda.
@@ -63,20 +65,27 @@ Adicione-as e depois clique em "Próximo".
 6. Em "Alterar a função de execução padrão", selecione "Usar uma função existente".
 7. No campo abaixo, em "Função existente", procure pela função que você criou no
 passo 1 (RoleCrud-seunome). Marque-a e depois clique em "Criar função".
-8. Na aba "Código", você fará o upload do arquivo CRUD.zip. Clique em "Fazer upload".
+<img width="1257" height="690" alt="image" src="https://github.com/user-attachments/assets/ff383a9b-0a6f-47f6-a28f-4f2c5bffc8a9" />
+<img width="1264" height="798" alt="image" src="https://github.com/user-attachments/assets/62ddeed9-1662-44eb-be7f-37c90372b28d" />
+9. Na aba "Código", você fará o upload do arquivo CRUD.zip. Clique em "Fazer upload".
 Selecione o arquivo e clique em "Salvar".
-9. Depois, selecione o arquivo já importado (CRUD.py) no editor de código.
-10. Role para baixo e procure pela seção "Configurações de tempo de execução". Clique
+<img width="1212" height="499" alt="image" src="https://github.com/user-attachments/assets/2f37f0a0-5e33-4933-80f8-0d6c6c33244c" />
+<img width="975" height="817" alt="image" src="https://github.com/user-attachments/assets/d9db57cf-a4ae-461e-ac62-a15b335efa75" />
+11. Depois, selecione o arquivo já importado (CRUD.py) no editor de código.
+12. Role para baixo e procure pela seção "Configurações de tempo de execução". Clique
 em "Editar".
-11. No campo "Handler" (Manipulador), apague o nome
+13. No campo "Handler" (Manipulador), apague o nome
 lambda_function.lambda_handler e digite CRUD.lambda_handler. Clique em "Salvar".
-12. Volte para a aba "Código". Dentro do código importado (CRUD.py), localize a linha
+<img width="1262" height="715" alt="image" src="https://github.com/user-attachments/assets/371cbfde-7cc0-4bde-95a0-f2541f86901e" />
+15. Volte para a aba "Código". Dentro do código importado (CRUD.py), localize a linha
 similar a table = dynamodb.Table(‘<sua tabela dynamodb>’) (geralmente na linha 7,
 mas pode variar). Apague <sua tabela dynamodb> e digite o nome exato da sua
 tabela que você salvou no bloco de notas (do Passo 2).
-- Observação: Lembre-se de apagar os símbolos < > ao digitar o nome da sua tabela.
+<img width="1000" height="458" alt="image" src="https://github.com/user-attachments/assets/d9c7726e-62fc-4743-a077-03aaf55e611d" />
+<img width="1108" height="546" alt="image" src="https://github.com/user-attachments/assets/a585d9ab-6762-4d8e-b389-8dffdf4fbc8d" />
 
-<img width="576" height="425" alt="image" src="https://github.com/user-attachments/assets/343ebe54-d13c-4856-a3e2-7ff2c7bb6dea" />
+- Observação: Lembre-se de apagar os símbolos < > ao digitar o nome da sua tabela.
+<img width="624" height="464" alt="image" src="https://github.com/user-attachments/assets/db485144-9c96-4d96-af03-cc93c8e87c60" />
 
 15. Após realizar a alteração do nome da tabela no código, clique no botão Deploy para
 validar suas mudanças e salvar a função.
@@ -85,6 +94,7 @@ validar suas mudanças e salvar a função.
 18. Altere o campo Memória para 256 MB.
 19. Altere o campo Tempo limite para 10 segundos.
 20. Depois clique em Salvar.
+<img width="1268" height="760" alt="image" src="https://github.com/user-attachments/assets/e7a3cf9d-1ca7-4b9c-a645-76cfaa296aec" />
 
 ## Passo 4: Criação do API Gateway
 
@@ -94,12 +104,12 @@ Clique em "Criar uma API".
 3. Digite o nome da API: APICRUD-seunome.
 4. Clique em "Adicionar integração".
 5. Selecione "Lambda".
-6. No campo "Função do Lambda", selecione a função criada no passo 3 (LambdaCrud-
-seunome).
-7. Clique em "Avançar".
-8. Na tela "Configurar rotas", você precisará adicionar 5 rotas. Clique no botão
+6. No campo "Função do Lambda", selecione a função criada no passo 3 (LambdaCrud-seunome).
+<img width="1251" height="784" alt="image" src="https://github.com/user-attachments/assets/b99959ef-4d1d-423f-8e2c-9be24d87e231" />
+8. Clique em "Avançar".
+9. Na tela "Configurar rotas", você precisará adicionar 5 rotas. Clique no botão
 "Adicionar rota" para cada uma.
-9. Para cada rota adicionada, digite as informações nos campos "Método" e "Caminho
+10. Para cada rota adicionada, digite as informações nos campos "Método" e "Caminho
 do recurso", conforme especificado na sua documentação ou imagem de referência
 (já que os métodos e caminhos específicos não foram listados no texto fornecido),
 conforme mostrado na imagem de referência. abaixo:
@@ -107,25 +117,31 @@ conforme mostrado na imagem de referência. abaixo:
 <img width="668" height="500" alt="image" src="https://github.com/user-attachments/assets/eb6f08ef-60b9-4d0a-83eb-a26391293644" />
 
 11. Depois clique em Avançar.
-12. Em Configurar estágios, digite: prod.
-13. Deixe marcada a caixa Implantação automática.
-14. Clique em Avançar.
-15. Será exibido um resumo das configurações. Clique em Criar.
-16. Após finalizar a criação da API:
-17. No painel de navegação esquerdo, clique em Deploy.
-18. Em seguida, clique em Stages.
-19. Selecione o estágio prod.
-20. Copie a URL “Invocar URL”
+<img width="1265" height="680" alt="image" src="https://github.com/user-attachments/assets/92091138-de74-4e6d-80ff-286b94c9e7c8" />
+13. Em Configurar estágios, digite: prod.
+14. Deixe marcada a caixa Implantação automática.
+15. Clique em Avançar.
+<img width="1268" height="640" alt="image" src="https://github.com/user-attachments/assets/688e8625-7784-43b9-bed2-8bb4152cc263" />
+17. Será exibido um resumo das configurações. Clique em Criar.
+18. Após finalizar a criação da API:
+19. No painel de navegação esquerdo, clique em Deploy.
+20. Em seguida, clique em Stages.
+21. Selecione o estágio prod.
+22. Copie a URL “Invocar URL”
 <img width="562" height="152" alt="image" src="https://github.com/user-attachments/assets/4db2c211-9b15-4819-987e-4eafed6583f1" />
-
-21. Abra o arquivo script.js.
-22. Localize o trecho no código onde a URL da API deve ser inserida "const API_URL".
-23. Apague <LINK SEU API GATEWAY>
-24. Cole a URL que você copiou do API Gateway anteriormente neste local indicado.
+<img width="1268" height="724" alt="image" src="https://github.com/user-attachments/assets/4caaccca-1064-4d63-89ff-f41dbf4edbb3" />
+23. Abra o arquivo script.js.
+24. Localize o trecho no código onde a URL da API deve ser inserida "const API_URL".
+25. Apague <LINK SEU API GATEWAY>
+26. Cole a URL que você copiou do API Gateway anteriormente neste local indicado.
 Conforme a imagem de referência a seguir:
 <img width="697" height="291" alt="image" src="https://github.com/user-attachments/assets/5cc73729-e4ca-4958-8b39-995b6f53fbac" />
+<img width="1117" height="677" alt="image" src="https://github.com/user-attachments/assets/1db3d372-fffd-4b7c-bbe6-055c8e208539" />
+<img width="1270" height="766" alt="image" src="https://github.com/user-attachments/assets/22e6dd0a-81a8-4d71-8818-f1930470e6ff" />
 
-25. Salve o arquivo script.js com a alteração.
+27. Salve o arquivo script.js com a alteração.
+
+
 ## Passo 5: Criação de um Bucket (S3)
 1. Acesse o Console de Gerenciamento da AWS e navegue até o serviço S3. Clique em
 "Criar bucket".
@@ -139,15 +155,17 @@ Conforme a imagem de referência a seguir:
 1.3.index
 7. Role para baixo e clique em "Carregar".
 8. Após finalizar o upload, clique em fechar.
-9. Na tela do seu bucket, selecione a aba "Propriedades".
-10. Role para baixo até encontrar a seção "Hospedagem de site estático". Clique em
+<img width="1245" height="483" alt="image" src="https://github.com/user-attachments/assets/a9f9b74e-a397-49d7-b700-0b40bc50d31e" />
+10. Na tela do seu bucket, selecione a aba "Propriedades".
+11. Role para baixo até encontrar a seção "Hospedagem de site estático". Clique em
 "Editar".
-11. Marque a caixa para "Ativar" a hospedagem de site estático.
-12. No campo "Documento de índice", digite index.html.
-13. Role para baixo e clique em "Salvar alterações".
-14. De volta na seção "Hospedagem de site estático", no campo "Endpoint de site de
+12. Marque a caixa para "Ativar" a hospedagem de site estático.
+13. No campo "Documento de índice", digite index.html.
+14. Role para baixo e clique em "Salvar alterações".
+<img width="1261" height="598" alt="image" src="https://github.com/user-attachments/assets/a329d970-533e-42ab-8af7-fa04c2b05e91" />
+16. De volta na seção "Hospedagem de site estático", no campo "Endpoint de site de
 bucket", copie a URL.
-15. Salve esta URL em um bloco de notas. Você usará esta URL para acessar o site
+17. Salve esta URL em um bloco de notas. Você usará esta URL para acessar o site
 (conforme mostrado na imagem de referência abaixo).
 
 <img width="626" height="339" alt="image" src="https://github.com/user-attachments/assets/b40b7dfe-96c3-47b4-9b58-7ac0c9440335" />
@@ -161,9 +179,10 @@ Permissões do seu bucket, procure pela seção Bloquear acesso público
 19. Clique em Salvar alterações.
 20. Será solicitado que você digite confirmar para confirmar a mudança. Digite confirmar
 e clique em Confirmar.
-21. Role um pouco mais para baixo na aba Permissões até encontrar a seção Política do
+<img width="1267" height="621" alt="image" src="https://github.com/user-attachments/assets/f2e6fef4-4e37-4051-8ba7-41f32d9faff1" />
+22. Role um pouco mais para baixo na aba Permissões até encontrar a seção Política do
 bucket.
-22. Clique em Editar (no lado direito da seção).
+23. Clique em Editar (no lado direito da seção).
 <img width="651" height="336" alt="image" src="https://github.com/user-attachments/assets/f4bbac9e-62ec-4c22-9c19-4e0588c556cf" />
 26. Na nova aba que será aberta (o Gerador de Política).
 • Observação: Certifique-se de que o navegador esteja em inglês antes de
@@ -182,8 +201,9 @@ laboratório.
 - Isso concederá a ação GetObject (ler objetos/arquivos) para qualquer principal (*) dentro de qualquer caminho (/*) do seu bucket S3.
 - Clique em "Add Statement".
 29. Depois de adicionar a instrução, clique em "Generate Policy".
-30. Na caixa de texto que aparece no Gerador de Política, selecione e copie a política
-JSON gerada.
+<img width="1242" height="831" alt="image" src="https://github.com/user-attachments/assets/85c206c1-e673-4ee5-a54b-1fbd0ab39f90" />
+
+30. Na caixa de texto que aparece no Gerador de Política, selecione e copie a política JSON gerada.
 31. Volte para a aba do Console da AWS onde você estava editando a Política do bucket
 (onde clicou em "Editar").
 32. Cole a política JSON que você copiou do gerador na caixa de texto do editor de
@@ -194,6 +214,7 @@ política do bucket, conforme mostrado na imagem de referência abaixo:
 35. Abra esta URL em um navegador web novamente.
 36. Verifique se o site carrega corretamente e se a aparência é similar à mostrada na imagem de referência abaixo.
 <img width="622" height="281" alt="image" src="https://github.com/user-attachments/assets/371b45bb-f6eb-41a1-a9a6-61d921bd00fe" />
+<img width="1229" height="822" alt="image" src="https://github.com/user-attachments/assets/a46b1147-a590-4b4d-b68c-60af0b8d7985" />
 
 ## Passo 6: Criação de Grupos de Logs no CloudWatch
 1. Acesse o Console de Gerenciamento da AWS e navegue até o serviço CloudWatch.
@@ -205,6 +226,8 @@ Grupos de logs.
 - No campo Configuração de retenção, selecione: 1 dia
 - No campo Classe de log, deixe selecionado: Padrão
 5. Depois, clique em Criar.
+<img width="1266" height="730" alt="image" src="https://github.com/user-attachments/assets/67ef3865-b62a-43cb-a64e-5c41f15f79d5" />
+
 6. Após a criação, acesse o grupo de logs que foi criado:
 <img width="650" height="89" alt="image" src="https://github.com/user-attachments/assets/1f1efb44-cad3-49c2-b86f-056a9e5534b5" />
 
@@ -223,6 +246,8 @@ Grupos de logs.
 44. No campo Destino do log, cola o ARN que a gente copiou lá do CloudWatch Logs.
 45. Em Formato do log, seleciona JSON.
 46. Por fim, clica em Salvar.
+<img width="1237" height="535" alt="image" src="https://github.com/user-attachments/assets/ea59a4e6-8e23-46af-a2e9-3dc7e1c55e77" />
+
 ### Ativando o CORS no API Gateway:
 47. No painel de navegação esquerdo, navegue até Develop.
 48. Clique em CORS.
@@ -238,6 +263,7 @@ imagem:
 51. Após configurar todos os, conforme mostrado na imagem de referência abaixo,
 clique em Salvar.
 <img width="1558" height="535" alt="image" src="https://github.com/user-attachments/assets/d8e6ae71-49b3-4552-97af-456f6af41e09" />
+<img width="1260" height="789" alt="image" src="https://github.com/user-attachments/assets/cdcbb50e-4d65-4351-accf-956768072784" />
 
 ## Passo 8: Cadastrando produtos no nosso site
 1. Abra a URL do site que você copiou no Passo 5 (o "Endpoint de site de bucket") no
@@ -250,6 +276,7 @@ seu navegador.
 programação/JSON)
 - QUANTIDADE: Digite 100
 4. Clique no botão Cadastrar.
+<img width="1017" height="624" alt="image" src="https://github.com/user-attachments/assets/17feb22b-190f-47c3-beea-3593bfccf673" />
 5. Verifique se o item que você acabou de cadastrar (ID 1) aparece na seção "Produtos Cadastrados" abaixo do formulário.
 <img width="728" height="374" alt="image" src="https://github.com/user-attachments/assets/3a34c3b7-42ca-41be-aa5b-207510956771" />
 
@@ -264,6 +291,9 @@ você adicionou.
 #### Observação: Na seção "Produtos Cadastrados" do site, você pode utilizar as opções
 no campo Ações para Editar ou Excluir os produtos, caso precise realizar alguma
 alteração.
+
+<img width="1095" height="430" alt="image" src="https://github.com/user-attachments/assets/72277a2f-de8b-480c-904f-753510ebed4f" />
+
 Agora, vamos verificar se os produtos cadastrados foram armazenados corretamente
 no DynamoDB:
 52. Acesse o Console de Gerenciamento da AWS e navegue de volta para o serviço
@@ -276,6 +306,7 @@ DynamoDB.
 - Clique em Executar.
 
 <img width="810" height="342" alt="image" src="https://github.com/user-attachments/assets/7ff8e629-d8ed-42fa-998b-a454af455af3" />
+<img width="1242" height="796" alt="image" src="https://github.com/user-attachments/assets/15ee01ab-310b-4d03-bab4-5af95e3179fc" />
 
 56. Abaixo, você visualizará os itens que foram cadastrados através do site e armazenados na sua tabela DynamoDB. A lista deverá conter os 4 produtos que você adicionou, conforme mostrado na imagem de referência abaixo.
 <img width="759" height="263" alt="image" src="https://github.com/user-attachments/assets/cc87fa4b-72fe-426e-966a-141ef340d46e" />
@@ -291,6 +322,8 @@ APICRUD-seunome
 ❖ O grupo que o Lambda criou automaticamente para a sua função:
 /aws/lambda/LambdaCrud-seunome.
 <img width="1218" height="298" alt="image" src="https://github.com/user-attachments/assets/735ba091-b7f7-4159-a736-92294f87a615" />
+<img width="1253" height="664" alt="image" src="https://github.com/user-attachments/assets/54748096-9dd4-4dda-a8c1-2181fe433acc" />
+
 4. Clique em cada um desses grupos de logs para acessá-los.
 5. Dentro de cada grupo de logs, você verá uma lista de "Streams de log". Clique em
 um stream de log recente.
