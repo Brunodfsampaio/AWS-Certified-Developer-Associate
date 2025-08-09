@@ -1,4 +1,4 @@
-<img width="867" height="201" alt="image" src="https://github.com/user-attachments/assets/c9e7572a-8c39-4ac7-8cbd-7348f90d3e9e" /># Laboratório - Aplicações com AWS Elastic Beanstalk
+AWS Elastic Beanstalk
 ## Observação: 
 A interface do Console de Gerenciamento da AWS pode sofrer
 pequenas alterações visuais ao longo do tempo, mas os conceitos e a localização
