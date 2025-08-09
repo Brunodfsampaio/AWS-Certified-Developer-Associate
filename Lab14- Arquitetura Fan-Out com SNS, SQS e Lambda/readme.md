@@ -57,6 +57,13 @@ Vamos criar duas filas: uma para a análise de fraude e uma Dead-Letter Queue
 - Type: Standard.
 - Name: fila-fraude-analise-dlq-seunome
 - Deixe as demais configurações padrão.
+- Clique em Create queue. Anote o ARN desta DLQ.
+
+<img width="1218" height="483" alt="image" src="https://github.com/user-attachments/assets/06303cb0-a01a-45dc-b498-d484407036c3" />
+<img width="1215" height="800" alt="image" src="https://github.com/user-attachments/assets/8402fec1-8300-4d74-843a-4f241d177ac3" />
+
+3. Criar Fila Principal para Análise de Fraude:
+- Clique em Create queue.
 -  Type: Standard.
 - Name: fila-fraude-analise-seunome
 - Desça até Dead-letter queue:
@@ -66,6 +73,8 @@ Vamos criar duas filas: uma para a análise de fraude e uma Dead-Letter Queue
 - Maximum receives: 3 (Após 3 falhas de processamento, a
 mensagem irá para a DLQ).
 - Clique em Create queue. Anote o ARN desta fila.
+
+<img width="1240" height="777" alt="image" src="https://github.com/user-attachments/assets/c6fe884a-9a69-405c-ab43-2e4d507292d9" />
 
 # Passo 2
 Este será o tópico central para disparar o fan-out.
@@ -119,6 +128,9 @@ sqs:GetQueueAttributes para a fila específica).
 - Role name: LambdaRoleSQSFraude-seunome
 - Create role.
 
+<img width="972" height="263" alt="image" src="https://github.com/user-attachments/assets/8f7b7d90-6aa9-4d00-a943-f5239fad7e83" />
+<img width="977" height="296" alt="image" src="https://github.com/user-attachments/assets/bef52185-87fa-4f4f-9c46-9c94a5e65829" />
+
 # Passo 4
 Criaremos quatro Lambdas simples (Python como exemplo).
 1. Console Lambda: Acesse o console Lambda.
@@ -132,10 +144,34 @@ Criaremos quatro Lambdas simples (Python como exemplo).
 - Selecione: Use an existing role.
 - Selecione: LambdaRoleSNSGeneric-seunome.
 - Create function.
+
+<img width="1242" height="720" alt="image" src="https://github.com/user-attachments/assets/bc54803d-784a-464a-8525-c23ea4991a80" />
+<img width="1207" height="535" alt="image" src="https://github.com/user-attachments/assets/7df0969c-d96e-4564-9d34-9bd726dfe857" />
+
 - Role para baixo, até a aba com o código da sua função. Nome da aba: “Code”.
 - Substitua o código no editor (lambda_function.py) pelo Código
 clicando aqui.
+
+```
+import json
+
+def lambda_handler(event, context):
+    print("Recebido evento para ATUALIZAR INVENTÃRIO:")
+    print(json.dumps(event))
+    # LÃ³gica para atualizar inventÃ¡rio aqui (simulada)
+    message_attributes = event['Records'][0]['Sns']['MessageAttributes']
+    order_id = message_attributes.get('OrderID', {}).get('Value', 'N/A')
+    print(f"InventÃ¡rio atualizado para o pedido: {order_id}")
+    return {
+        'statusCode': 200,
+        'body': json.dumps(f'InventÃ¡rio atualizado para pedido {order_id}')
+    }
+```
+
 - Depois clique em Deploy.
+
+<img width="1240" height="800" alt="image" src="https://github.com/user-attachments/assets/0cb73754-3748-4375-b69f-fabbc04d8fd6" />
+
 3. Criar Lambda "Processar Pagamento":
 4. No menu lateral esquerdo, clique em Functions.
 - Create function.
@@ -147,6 +183,9 @@ clicando aqui.
 - Selecione: Use an existing role.
 - Existing role: LambdaRoleSNSGeneric-seunome
 - Create function.
+
+<img width="1242" height="785" alt="image" src="https://github.com/user-attachments/assets/fd5b23ea-0782-4558-baae-f33f8913f728" />
+
 -  Role para baixo, até a aba com o código da sua função. Nome da aba: “Code”.
 - Substitua o código no editor (lambda_function.py) pelo Código
 clicando aqui.
@@ -167,8 +206,9 @@ def lambda_handler(event, context):
         'body': json.dumps(f'Pagamento processado para pedido {order_id}')
     }
 ```
-
+<img width="1232" height="714" alt="image" src="https://github.com/user-attachments/assets/5fbc4f57-05ba-40a3-96fe-d9738ede808f" />
 - Depois clique em Deploy.
+ 
 5. Criar Lambda "Notificar Cliente":
 6. No menu lateral esquerdo, clique em Functions.
 - Create function.
@@ -202,6 +242,8 @@ def lambda_handler(event, context):
 ```
 
 - Depois clique em Deploy.
+<img width="1233" height="752" alt="image" src="https://github.com/user-attachments/assets/4dd6ce66-3476-4189-a271-45dc17d90b7c" />
+
 7. Criar Lambda "Analisar Fraude" (acionada pela SQS):
 8. No menu lateral esquerdo, clique em Functions.
 - Create function.
@@ -213,6 +255,9 @@ def lambda_handler(event, context):
 - Selecione: Use an existing role.
 - Selecione: LambdaRoleSQSFraude-seunome.
 - Create function.
+
+<img width="1242" height="803" alt="image" src="https://github.com/user-attachments/assets/34323fef-4c33-46d0-9292-2114468b1fe1" />
+
 - Role para baixo, até a aba com o código da sua função. Nome da aba: “Code”.
 - Substitua o código no editor (lambda_function.py) pelo Código
 clicando aqui.
@@ -247,6 +292,9 @@ def lambda_handler(event, context):
 ```
 
 - Depois clique em Deploy.
+
+<img width="1244" height="821" alt="image" src="https://github.com/user-attachments/assets/0001bfe7-9892-4df2-9dcd-a475f974fa9e" />
+
 - Adicionar Gatilho SQS:
 - Na página da função lambda-analise-fraude-seunome,
 selecione a aba Configuration.
@@ -258,6 +306,8 @@ simplificando os logs).
 - Deixe as demais opções padrão.
 - Clique em Add.
 
+<img width="1236" height="760" alt="image" src="https://github.com/user-attachments/assets/066d9570-e6b2-4190-a8a7-d166c2c60a6b" />
+
 # Passo 5
 1. Console SNS: Acesse o console do SNS.
 2. Topics -> Clique no seu tópico topico-pedidos-ecommerce-seunome.
@@ -267,25 +317,57 @@ simplificando os logs).
 - Subscription filter policy (Opcional, mas vamos usar):
 - Marque Subscription filter policy.
 - Cole o seguinte JSON na caixa de texto da política de filtro:
-<img width="504" height="108" alt="image" src="https://github.com/user-attachments/assets/b9ef7f09-ce94-473e-b7c1-26f3d96d875d" />
+
+```
+{
+"EventType": ["OrderPlaced", "InventoryCheckRequired"]
+}
+```
+
 - Isso significa que esta Lambda só será acionada se a mensagem SNS tiver um atributo EventType com valor OrderPlaced OU InventoryCheckRequired.
 - Create subscription.
+
+<img width="1245" height="811" alt="image" src="https://github.com/user-attachments/assets/32639f17-7f0f-40ad-a33d-d2433adec3b2" />
+
 4. Repita o Passo 3 para a Lambda "Processar Pagamento":
 - Endpoint: ARN da Lambda lambda-pagamento-seunome.
 - Subscription filter policy:
+
+```
+{
+"EventType": ["OrderPlaced"],
+"PaymentType": ["CreditCard", "Boleto"]
+}
+```
+
 <img width="484" height="149" alt="image" src="https://github.com/user-attachments/assets/476c922e-ad34-4eaf-bec9-634c76bcf9f0" />
 - Esta Lambda será acionada se EventType for OrderPlaced E PaymentType for CreditCard OU Boleto.
+
 5. Repita o Passo 3 para a Lambda "Notificar Cliente":
 - Endpoint: ARN da Lambda lambda-notificacao-cliente-seunome.
 - Subscription filter policy:
 <img width="485" height="118" alt="image" src="https://github.com/user-attachments/assets/a4673368-191a-469d-be5b-b9bd2e19c429" />
+
+```
+{
+"EventType": ["OrderConfirmed", "OrderShipped"]
+}
+```
+
 6. Repita o Passo 3 para a Fila SQS "Análise de Fraude":
 - Protocol: Amazon SQS.
 - Endpoint: Selecione o ARN da fila fila-fraude-analise-seunome.
 - Subscription filter policy:
 <img width="492" height="154" alt="image" src="https://github.com/user-attachments/assets/79e6e62e-f417-47c0-a1f4-3706200a47ab" />
-▪ Esta fila receberá mensagens se EventType for OrderPlaced E
-TransactionValue (um atributo numérico) for maior que 500.
+
+```
+{
+"EventType": ["OrderPlaced"],
+"TransactionValue": [{"numeric": [">", 500]}]
+}
+```
+
+- Esta fila receberá mensagens se EventType for OrderPlaced E TransactionValue (um atributo numérico) for maior que 500.
 
 7. Verificar/Ajustar Política de Acesso da Fila SQS:
 - Vá para o console SQS -> fila-fraude-analise-seunome -> Aba Queue policies -> Access policy -> Edit.
@@ -303,6 +385,18 @@ pedidos-ecommerce-seunome.
 2. Clique em Publish message.
 3. Message body:
 <img width="424" height="288" alt="image" src="https://github.com/user-attachments/assets/d8860538-5b46-4d2c-bfb5-6ce58de8e7f9" />
+
+```
+{
+"pedido_id": "PEDIDO-123",
+"cliente_id": "CLIENTE-XYZ",
+"itens": [
+{"produto_id": "PROD-A", "quantidade": 2},
+{"produto_id": "PROD-B", "quantidade": 1}
+]
+}
+```
+
 4. Em Message attributes (MUITO IMPORTANTE para os filtros):
 - Type: String
 - Name: EventType
@@ -325,6 +419,8 @@ pedidos-ecommerce-seunome.
 - Value: 750 (Para testar o filtro da SQS)
 5. Clique em Publish message.
 
+<img width="1245" height="784" alt="image" src="https://github.com/user-attachments/assets/188fbc09-b31d-4d1e-8616-50b6d611aed0" />
+
 # Passo 7
 1. CloudWatch Logs:
 - Acesse o CloudWatch -> Log groups.
@@ -333,6 +429,8 @@ pedidos-ecommerce-seunome.
 - /aws/lambda/lambda-pagamento-seunome: Deve ter sido acionada (devido a EventType: OrderPlaced e PaymentType: CreditCard).
 - /aws/lambda/lambda-notificacao-cliente-seunome: Não deve ter sido acionada.
 - /aws/lambda/lambda-analise-fraude-seunome: Deve ter sido acionada (após a SQS entregar a mensagem, devido a EventType: OrderPlaced e TransactionValue > 500).
+
+<img width="1232" height="658" alt="image" src="https://github.com/user-attachments/assets/ecbcf3e8-991f-4a2c-8092-49d3ff93a683" />
 
 # Passo 8
 1. Exclua as assinaturas do tópico SNS.
